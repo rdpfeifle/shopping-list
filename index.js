@@ -4,6 +4,7 @@ import {
   getDatabase,
   ref,
   push,
+  onValue,
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
 const app = initializeApp(firebaseConfig);
@@ -16,21 +17,14 @@ const shoppingListEl = document.getElementById("shopping-list");
 
 const clearInputField = () => {
   inputField.value = "";
-
-  /* 
-// create new li
-    const newLi = document.createElement("li");
-
-// assign the content to whatever is in the inputVal
-    newLi.innerHTML = inputVal;
-
-// append the new <li> to the shoppingList
-    shoppingListEl.appendChild(newLi); 
-*/
 };
 
 const addNewItem = (item) => {
   shoppingListEl.innerHTML += `<li>${item}</li>`;
+};
+
+const clearShoppingList = () => {
+  shoppingListEl.innerHTML = "";
 };
 
 addToCart.addEventListener("click", () => {
@@ -40,6 +34,14 @@ addToCart.addEventListener("click", () => {
   push(shoppingItemsInDB, inputVal);
 
   clearInputField();
+});
 
-  addNewItem(inputVal);
+onValue(shoppingItemsInDB, (snapshot) => {
+  let itemsArray = Object.values(snapshot.val());
+
+  clearShoppingList();
+
+  for (let item in itemsArray) {
+    addNewItem(itemsArray[item]);
+  }
 });
