@@ -9,7 +9,8 @@ import {
   remove,
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-const app = initializeApp(firebaseConfig);
+const { databaseURL } = firebaseConfig;
+const app = initializeApp(databaseURL);
 const db = getDatabase(app);
 const shoppingItemsInDB = ref(db, "shopping-items");
 
