@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import firebaseConfig from "./helpers/apiKeys";
+import firebaseConfig from "./helpers/apiKeys.js";
+
 import {
   getDatabase,
   ref,
