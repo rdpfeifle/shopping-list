@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import firebaseConfig from "./helpers/apiKeys.js";
+import firebaseConfig from "./firebaseConfig.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 
 import {
   getDatabase,
@@ -9,8 +9,7 @@ import {
   remove,
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-const { databaseURL } = firebaseConfig;
-const app = initializeApp(databaseURL);
+const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const shoppingItemsInDB = ref(db, "shopping-items");
 
