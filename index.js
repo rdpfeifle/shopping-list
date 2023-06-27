@@ -1,4 +1,3 @@
-import firebaseConfig from "./firebaseConfig.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import {
   getDatabase,
@@ -7,6 +6,10 @@ import {
   onValue,
   remove,
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+const firebaseConfig = {
+  databaseURL: process.env.DATABASE_URL,
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);

@@ -1,3 +1,4 @@
 .DS_Store
 firebaseConfig.js
 node_modules/
+.env
